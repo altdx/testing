@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deno: [stable, canary]
+    steps:
+      - name: Git checkout module
+        uses: actions/checkout@v2
+      - name: Setup deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{ matrix.deno }}
+      - name: Build module
+        run: deno run --reload ./Mock/mod.ts
+      - name: Test module
+        run: deno test --unstable --allow-all
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout module
+        uses: actions/checkout@v2
+      - name: Setup deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: ${{ matrix.deno }}
+      - name: Format module
+        run: deno fmt --check
