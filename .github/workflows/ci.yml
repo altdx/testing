@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-16.04
     strategy:
       matrix:
-        deno-version: [1.2.2, 1.3.0, 1.7.5]
+        deno-version: ["v1.0.0", "v0.42.0", "v1.x", "v0.x", "nightly"]
     steps:
       - name: Git Checkout Deno Module
         uses: actions/checkout@v2
