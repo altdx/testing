@@ -21,7 +21,7 @@ export interface IMock {
    * @param value - Value that will be returned.
    * @returns The current Mock instance (fluent).
    */
-  willReturn(value: any): IMock;
+  willReturn(value: unknown): IMock;
 
   /**
    * Accepts a value that will always be returned whenever the mock function is called.
@@ -29,7 +29,7 @@ export interface IMock {
    * @param value - Value that will always be returned.
    * @returns The current Mock instance (fluent).
    */
-  willAlwaysReturn(value: any): IMock;
+  willAlwaysReturn(value: unknown): IMock;
 
   /**
    * Ensures that a mock function is called.
@@ -47,12 +47,12 @@ export interface IMock {
    * Optionally, you can provide a type for the expected arguments via a generic.
    * Note that the type must be either an array or a tuple.
    */
-  haveBeenCalledWith<E extends any[]>(...args: E): boolean;
+  haveBeenCalledWith<E extends unknown[]>(...args: E): boolean;
 
   /**
    * Combination of haveBeenCalledTimes and haveBeenCalledWith
    */
-  haveBeenCalledTimesWith<E extends any[]>(
+  haveBeenCalledTimesWith<E extends unknown[]>(
     expected: number,
     ...args: E
   ): boolean;
@@ -63,7 +63,10 @@ export interface IMock {
    * Optionally, you can provide a type for the expected arguments via a generic.
    * Note that the type must be either an array or a tuple.
    */
-  haveBeenNthCalledWith<E extends any[]>(nthCall: number, ...args: E): boolean;
+  haveBeenNthCalledWith<E extends unknown[]>(
+    nthCall: number,
+    ...args: E
+  ): boolean;
 
   /**
    * If you have a mock function, you can use `.haveBeenLastCalledWith`
@@ -72,7 +75,7 @@ export interface IMock {
    * Optionally, you can provide a type for the expected arguments via a generic.
    * Note that the type must be either an array or a tuple.
    */
-  haveBeenLastCalledWith<E extends any[]>(...args: E): boolean;
+  haveBeenLastCalledWith<E extends unknown[]>(...args: E): boolean;
 
   /**
    * Use to test the specific value that a mock function last returned.
@@ -82,7 +85,7 @@ export interface IMock {
    * Optionally, you can provide a type for the expected value via a generic.
    * This is particularly useful for ensuring expected objects have the right structure.
    */
-  haveLastReturnedWith<E = any>(expected: E): boolean;
+  haveLastReturnedWith<E = unknown>(expected: E): boolean;
 
   /**
    * Use to test the specific value that a mock function returned for the nth call.
@@ -92,7 +95,7 @@ export interface IMock {
    * Optionally, you can provide a type for the expected value via a generic.
    * This is particularly useful for ensuring expected objects have the right structure.
    */
-  haveNthReturnedWith<E = any>(nthCall: number, expected: E): boolean;
+  haveNthReturnedWith<E = unknown>(nthCall: number, expected: E): boolean;
 
   /**
    * Use to test that the mock function successfully returned (i.e., did not throw an error) at least one time
@@ -111,16 +114,16 @@ export interface IMock {
    * Optionally, you can provide a type for the expected value via a generic.
    * This is particularly useful for ensuring expected objects have the right structure.
    */
-  haveReturnedWith<E = any>(expected: E): boolean;
+  haveReturnedWith<E = unknown>(expected: E): boolean;
 }
 
 export interface IMockCallInfo {
   /**
    * All arguments passed to the call
    */
-  args: any[];
+  args: unknown[];
   /**
    * The return value of the call
    */
-  returnValue: any;
+  returnValue: unknown;
 }

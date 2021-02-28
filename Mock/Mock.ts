@@ -4,12 +4,12 @@ import { IMock, IMockCallInfo } from "./mod.ts";
  * Spy Class description
  */
 export class Mock implements IMock {
-  protected returnValues: any[] = [];
-  protected alwaysReturnValue: any = undefined;
+  protected returnValues: unknown[] = [];
+  protected alwaysReturnValue: unknown = undefined;
   protected calls: IMockCallInfo[] = [];
   protected stdoutWriteSync = Deno.stdout.writeSync;
 
-  protected mockFn(...args: any): void {
+  protected mockFn(...args: unknown[]): void {
     let rValue = this.alwaysReturnValue;
 
     if (this.returnValues[this.calls.length] !== undefined) {
@@ -53,7 +53,7 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.willReturn
    */
-  public willReturn(value: any): IMock {
+  public willReturn(value: unknown): IMock {
     this.returnValues.push(value);
 
     return this;
@@ -62,7 +62,7 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.willAlwaysReturn
    */
-  public willAlwaysReturn(value: any): IMock {
+  public willAlwaysReturn(value: unknown): IMock {
     this.alwaysReturnValue = value;
 
     return this;
@@ -78,7 +78,7 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.haveBeenCalledWith
    */
-  public haveBeenCalledWith<E extends any[]>(...args: E): boolean {
+  public haveBeenCalledWith<E extends unknown[]>(...args: E): boolean {
     const call: IMockCallInfo = this.calls[this.calls.length - 1];
     if (call === undefined) {
       return false;
@@ -90,7 +90,7 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.haveBeenCalledTimesWith
    */
-  public haveBeenCalledTimesWith<E extends any[]>(
+  public haveBeenCalledTimesWith<E extends unknown[]>(
     expected: number,
     ...args: E
   ): boolean {
@@ -110,7 +110,7 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.haveBeenNthCalledWith
    */
-  public haveBeenNthCalledWith<E extends any[]>(
+  public haveBeenNthCalledWith<E extends unknown[]>(
     nthCall: number,
     ...args: E
   ): boolean {
@@ -125,14 +125,17 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.haveBeenLastCalledWith
    */
-  public haveBeenLastCalledWith<E extends any[]>(...args: E): boolean {
+  public haveBeenLastCalledWith<E extends unknown[]>(...args: E): boolean {
     return this.haveBeenNthCalledWith(this.calls.length, ...args);
   }
 
   /**
    * @inheritDoc IMock.haveNthReturnedWith
    */
-  public haveNthReturnedWith<E = any>(nthCall: number, expected: E): boolean {
+  public haveNthReturnedWith<E = unknown>(
+    nthCall: number,
+    expected: E,
+  ): boolean {
     if (this.calls[nthCall - 1] === undefined) {
       return false;
     }
@@ -144,7 +147,7 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.haveReturnedWith
    */
-  public haveReturnedWith<E = any>(expected: E): boolean {
+  public haveReturnedWith<E = unknown>(expected: E): boolean {
     const call: IMockCallInfo = this.calls[this.calls.length - 1];
     if (call === undefined) {
       return expected === undefined;
@@ -156,7 +159,7 @@ export class Mock implements IMock {
   /**
    * @inheritDoc IMock.haveLastReturnedWith
    */
-  public haveLastReturnedWith<E = any>(expected: E): boolean {
+  public haveLastReturnedWith<E = unknown>(expected: E): boolean {
     return this.haveNthReturnedWith(this.calls.length, expected);
   }
 
@@ -184,7 +187,6 @@ export class Mock implements IMock {
    */
   haveReturned(): boolean {
     for (let i = 0; i < this.calls.length; i++) {
-      console.warn(this.calls[i].returnValue);
       if (this.calls[i].returnValue !== undefined) {
         return true;
       }
