@@ -1,4 +1,14 @@
-# Altdx Testing Library
+<div align="center">
+
+![example workflow](https://github.com/altdx/testing/actions/workflows/main.yml/badge.svg)
+![issues](https://img.shields.io/github/issues/altdx/testing)
+![forks](https://img.shields.io/github/forks/altdx/testing)
+![stars](https://img.shields.io/github/stars/altdx/testing)
+![license](https://img.shields.io/github/license/altdx/testing)
+
+</div>
+
+<h1 align="center">Altdx Testing Library</h1>
 
 ## Description
 

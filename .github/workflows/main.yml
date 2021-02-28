@@ -1,4 +1,4 @@
-name: Altdx Testing Library CI / CD
+name: Altdx Testing Library
 
 on:
   push:
