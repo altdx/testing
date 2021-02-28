@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        deno: [stable, canary]
+        deno: ["v1.x"]
     steps:
       - name: Git checkout module
         uses: actions/checkout@v2
@@ -25,6 +25,9 @@ jobs:
         run: deno test --unstable --allow-all
   lint:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        deno: ["v1.x"]
     steps:
       - name: Git checkout module
         uses: actions/checkout@v2
