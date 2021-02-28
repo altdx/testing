@@ -1,6 +1,6 @@
 <div align="center">
 
-![altdx](https://github.com/altdx/testing/actions/workflows/main.yml/badge.svg)
+![altdx](https://github.com/altdx/testing/actions/workflows/ci.yml/badge.svg)
 ![tag](https://img.shields.io/github/v/tag/altdx/testing?label=version)
 ![GitHub last commit](https://img.shields.io/github/last-commit/altdx/testing)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/altdx/testing)
