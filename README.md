@@ -1,10 +1,13 @@
 <div align="center">
 
 ![altdx](https://github.com/altdx/testing/actions/workflows/main.yml/badge.svg)
-![[issues](https://github.com/altdx/testing/issues)](https://img.shields.io/github/issues/altdx/testing)
-![forks](https://img.shields.io/github/forks/altdx/testing)
-![stars](https://img.shields.io/github/stars/altdx/testing)
+![tag](https://img.shields.io/github/v/tag/altdx/testing?label=version)
+![GitHub last commit](https://img.shields.io/github/last-commit/altdx/testing)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/altdx/testing)
+![issues](https://img.shields.io/github/issues/altdx/testing)
 ![license](https://img.shields.io/github/license/altdx/testing)
+![forks](https://img.shields.io/github/forks/altdx/testing?style=social)
+![stars](https://img.shields.io/github/stars/altdx?style=social)
 
 </div>
 
